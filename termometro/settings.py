@@ -1,3 +1,4 @@
+#encoding:utf-8
 """
 Django settings for termometro project.
 
@@ -10,7 +11,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+import dj_database_url
+
+BASE_DIR        = os.path.dirname(os.path.abspath(__file__))
+SITE_ROOT       = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,17 +29,20 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
-
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,15 +63,22 @@ WSGI_APPLICATION = 'termometro.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
 DATABASES = {
-    #'default': {}
+    'default': {
+        'ENGINE'    : 'django.db.backends.sqlite3',
+        'NAME'      : 'database-SQLi.db',
+        'USER'      : '',
+        'PASSWORD'  : '',
+        'HOST'      : '',
+        'PORT'      : '',
+    }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-cl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Santiago'
 
 USE_I18N = True
 
@@ -73,14 +87,29 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.6/howto/static-files/
+# List of callables that know how to import templates from various sources.
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+# 'django.template.loaders.eggs.Loader',
+)
 
-STATIC_URL = '/static/'
+# List of finder classes that know how to find static files in
+# various locations.
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+ )
+
+
+TEMPLATE_DIRS = (
+    os.path.join(SITE_ROOT,'templates'),
+)
+
 
 # Parse database configuration from $DATABASE_URL
-import dj_database_url
-DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
+#DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -88,12 +117,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-# Static asset configuration
-import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+
+MEDIA_ROOT = os.path.normpath(os.path.join(SITE_ROOT,'media'))
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static_root', 'static')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(SITE_ROOT, 'static'),
 )
