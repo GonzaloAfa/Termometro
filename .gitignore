@@ -22,6 +22,8 @@ var/
 .installed.cfg
 *.egg
 
+database.sqlite
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
