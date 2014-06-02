@@ -104,6 +104,10 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
  )
 
+STATICFILES_DIRS = (
+    os.path.join(SITE_ROOT,'static_root','static'),
+)
+
 
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT,'templates'),
@@ -123,9 +127,4 @@ ALLOWED_HOSTS = ['*']
 MEDIA_ROOT = os.path.normpath(os.path.join(SITE_ROOT,'media'))
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(SITE_ROOT, 'static_root', 'static')
 STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static'),
-)
