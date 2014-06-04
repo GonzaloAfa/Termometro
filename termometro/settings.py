@@ -147,7 +147,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
 SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+URL_PATH = 'http://megafono.herokuapp.com'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/login/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_LOGIN_URL = '/login-url/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new-users-redirect-url/'
@@ -162,7 +163,6 @@ SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 #Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '644854592229779' 
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b480d65d080a2fc92fc405c3ca481da6'
-FACEBOOK_AUTH_EXTRA_ARGUMENTS = {'display': 'touch'}
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
