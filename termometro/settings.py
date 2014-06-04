@@ -156,8 +156,9 @@ SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/new-association-redirect-url/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
 SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 
+
 #In case of need a custom user model
-#SOCIAL_AUTH_USER_MODEL = 'login.User'
+#SOCI   AL_AUTH_USER_MODEL = 'login.User'
 
 #Media providers special configuration
 #Facebook
