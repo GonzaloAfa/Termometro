@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^login/$', 'login.views.prueba'),
+    url(r'^complete/facebook/$', 'login.views.response'),
+
     #url(r'^principal/', include('principal.urls')),
 
 )

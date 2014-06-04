@@ -7,3 +7,6 @@ from django.http import HttpResponse
 # Create your views here.
 def prueba(request):
     return render_to_response('login_test.html', RequestContext(request))
+
+def response(request):
+	return render_to_response('response.html',RequestContext(request))
