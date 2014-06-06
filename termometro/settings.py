@@ -135,13 +135,13 @@ STATICFILES_DIRS = (
 
 
 AUTHENTICATION_BACKENDS = (
-    'social.backends.facebook.FacebookAppOAuth2',
     'social.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
     'django.contrib.auth.context_processors.auth',
 
 )
@@ -152,7 +152,7 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'login/success/'
 SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
 SOCIAL_AUTH_LOGIN_URL = '/login/'
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/login/new-user'
-SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/new-association-redirect-url/'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = 'login/new-association-redirect-url/'
 SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
 SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 
@@ -164,6 +164,7 @@ SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 #Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '644854592229779' 
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b480d65d080a2fc92fc405c3ca481da6'
+SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = 'megafonoci'
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
