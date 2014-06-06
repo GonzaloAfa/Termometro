@@ -165,6 +165,7 @@ SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 SOCIAL_AUTH_FACEBOOK_KEY = '644854592229779' 
 SOCIAL_AUTH_FACEBOOK_SECRET = 'b480d65d080a2fc92fc405c3ca481da6'
 SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = 'megafonoci'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 
 SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.social_details',
@@ -172,7 +173,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.auth_allowed',
     'social.pipeline.social_auth.social_user',
     'social.pipeline.user.get_username',
-    'social.pipeline.mail.mail_validation',
+    #'social.pipeline.mail.mail_validation',
     'social.pipeline.user.create_user',
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
