@@ -11,9 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
-    url(r'^login/$', 'login.views.prueba'),
-    url(r'^login/new-association-redirect-url/$', 'login.views.response'),
-    url(r'^login/new-user/$', 'login.views.response'),
+    url(r'^prueba/$', 'login.views.prueba'),
 
 
 
