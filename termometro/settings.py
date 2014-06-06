@@ -158,7 +158,7 @@ SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
 
 
 #In case of need a custom user model
-#SOCIAL_AUTH_USER_MODEL = 'login.User'
+AUTH_USER_MODEL = 'login.CustomUser'
 
 #Media providers special configuration
 #Facebook
