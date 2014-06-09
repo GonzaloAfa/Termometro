@@ -5,7 +5,40 @@
 </head>
 
 <body>
-	<p> Yai, volviste! </p>
+
+<p>You are logged in as {{ user.username }}! (<a href="/logout/">Logout</a>)</p>
+
+<p>Associated:</p>
+{% for assoc in backends.associated %}
+  <div>
+    <strong>{{ assoc.provider }}</strong>
+    <form action="{% url 'social:disconnect_individual' assoc.provider assoc.id %}" method="post">{% csrf_token %}
+      <button>Disconnect</button>
+    </form>
+  </div>
+{% endfor %}
+
+<p>Associate:</p>
+<ul>
+  {% for name in backends.not_associated %}
+    <li>
+      <a href="{% url 'social:begin' name %}">{{ name }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+{% if plus_id %}
+<div id="signinButton">
+  <span class="g-signin" data-scope="{{ plus_scope }}"
+                         data-clientid="{{ plus_id }}"
+                         data-redirecturi="postmessage"
+                         data-accesstype="offline"
+                         data-cookiepolicy="single_host_origin"
+                         data-callback="signInCallback">
+  </span>
+</div>
+<div id="result"></div>
+{% endif %}
 </body>
 
 </html>
