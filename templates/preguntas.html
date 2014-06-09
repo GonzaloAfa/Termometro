@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comentario</title>
+  {% load staticfiles %}
+  
+  <!-- Bootstrap core CSS -->
+    <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
+    <link href="{% static "css/steps.css"%}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"> Termómetro </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="row">
+          <div class="col-sm-2 text-center">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG4RKDxDzOos8wCCRDBlEiUlj6YYaJ8yDZZo7ZJS93Xk4QNsJhxw" class="img-circle" alt="circle-image" width="180px" height="180px">
+          </div>
+        <div class="col-sm-10 text-center">
+          <h1>{{modelo.pregunta}}</h1>
+        </div>
+        </div>
+        <div class="row">
+            <h2>{{modelo.encabezado}}</h2>
+            <p>{{modelo.cuerpo}}</p>
+            <p><a href="{{modelo.url}}" class="btn btn-primary btn-lg" role="button">Más información &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    
+                    <input type="text" class="form-control" placeholder="Nombre">
+                    
+                </div>
+                <div class="panel-body">
+                    <textarea class="form-control" rows="3"></textarea></br>
+                    <button type="button" class="btn btn-primary">Comentar</button>
+                </div>
+            </div>
+
+
+            {% for comment in comentarios%}
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img src="http://www.clker.com/cliparts/b/1/f/a/1195445301811339265dagobert83_female_user_icon.svg.med.png" class="img-square" alt="foto-usuario" width="40px" height="40px">
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 class="panel-title">{{comment.usuario.nombre}} {{comment.usuario.apellido}}</h3>
+                            <a href="#"> +1 </a>
+                            <a href="#"> -1 </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                  {{comment.texto}}
+                </div>
+            </div>
+            {% endfor %}
+
+
+        </div>
+        <div class="col-sm-3">
+        </div>
+      </div>
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
+</body>
+
+</html>
