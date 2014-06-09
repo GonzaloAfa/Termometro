@@ -12,6 +12,9 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url('', include('social.apps.django_app.urls', namespace='social')),
     url(r'^prueba/$', 'login.views.home'),
+    url(r'^login/$', 'login.views.home'),
+    url(r'^logout/$', 'login.views.logout'),
+    url(r'^done/$', 'login.views.done', name='done'),
 
 
 
