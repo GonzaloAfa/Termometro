@@ -64,27 +64,27 @@ WSGI_APPLICATION = 'termometro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE'    : 'django.db.backends.sqlite3',
-#         'NAME'      : 'database-SQLi.db',
-#         'USER'      : '',
-#         'PASSWORD'  : '',
-#         'HOST'      : '',
-#         'PORT'      : '',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
-        'NAME'      : 'd7mtcl7epem3m',
-        'USER'      : 'cgoajpyealkokc',
-        'PASSWORD'  : 'TaIxmHmNzhlzPIbO5DfS7lH0WK',
-        'HOST'      : 'ec2-54-83-14-68.compute-1.amazonaws.com',
-        'PORT'      : '5432',
+        'ENGINE'    : 'django.db.backends.sqlite3',
+        'NAME'      : 'database-SQLi.db',
+        'USER'      : '',
+        'PASSWORD'  : '',
+        'HOST'      : '',
+        'PORT'      : '',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
+#         'NAME'      : 'd7mtcl7epem3m',
+#         'USER'      : 'cgoajpyealkokc',
+#         'PASSWORD'  : 'TaIxmHmNzhlzPIbO5DfS7lH0WK',
+#         'HOST'      : 'ec2-54-83-14-68.compute-1.amazonaws.com',
+#         'PORT'      : '5432',
+#     }
+# }
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
