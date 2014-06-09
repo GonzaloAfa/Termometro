@@ -9,5 +9,4 @@ class Comentario(models.Model):
 	id_pregunta = models.ForeignKey(Pregunta)
 	relevancia	= models.IntegerField(default=0)
 
-
 	

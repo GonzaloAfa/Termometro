@@ -2,9 +2,9 @@
 <html>
 <head>
 <title>Comentario</title>
-	{% load staticfiles %}
-	
-	<!-- Bootstrap core CSS -->
+  {% load staticfiles %}
+  
+  <!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
     <link href="{% static "css/steps.css"%}" rel="stylesheet">
 </head>
@@ -26,18 +26,18 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      	<div class="row">
-      		<div class="col-sm-2 text-center">
-      			<img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG4RKDxDzOos8wCCRDBlEiUlj6YYaJ8yDZZo7ZJS93Xk4QNsJhxw" class="img-circle" alt="circle-image" width="180px" height="180px">
-      		</div>
-  			<div class="col-sm-10 text-center">
-  				<h1>¿Qué opinas de la postura de Giorgio?</h1>
-  			</div>
+        <div class="row">
+          <div class="col-sm-2 text-center">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG4RKDxDzOos8wCCRDBlEiUlj6YYaJ8yDZZo7ZJS93Xk4QNsJhxw" class="img-circle" alt="circle-image" width="180px" height="180px">
+          </div>
+        <div class="col-sm-10 text-center">
+          <h1>{{modelo.pregunta}}</h1>
+        </div>
         </div>
         <div class="row">
-            <h2>Giorgio Jackson y reforma educacional: "Son transformaciones necesarias pero no suficientes"</h2>
-            <p>Junto a Camila Vallejo y Karol Cariola, la bancada estudiantil se mostró conforme con los proyectos que presentó el gobierno para mejorar la educación, pero advirtió que faltó precisar el rol de la educación pública en el sistema.</p>
-            <p><a href="http://www.latercera.com/noticia/politica/2014/05/674-578811-9-giorgio-jackson-y-reforma-educacional-son-transformaciones-necesarias-pero-no.shtml" class="btn btn-primary btn-lg" role="button">Más información &raquo;</a></p>
+            <h2>{{modelo.encabezado}}</h2>
+            <p>{{modelo.cuerpo}}</p>
+            <p><a href="{{modelo.url}}" class="btn btn-primary btn-lg" role="button">Más información &raquo;</a></p>
         </div>
     </div>
 
@@ -58,50 +58,31 @@
                     <button type="button" class="btn btn-primary">Comentar</button>
                 </div>
             </div>
+
+
+            {% for comment in comentarios%}
             <div class="panel panel-default">
+
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-sm-2">
                             <img src="http://www.clker.com/cliparts/b/1/f/a/1195445301811339265dagobert83_female_user_icon.svg.med.png" class="img-square" alt="foto-usuario" width="40px" height="40px">
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="panel-title">Rosita Flores</h3>
+                            <h3 class="panel-title">{{comment.usuario.nombre}} {{comment.usuario.apellido}}</h3>
                             <a href="#"> +1 </a>
                             <a href="#"> -1 </a>
                         </div>
                     </div>
                 </div>
                 <div class="panel-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  {{comment.texto}}
                 </div>
             </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="http://www.clipartbest.com/cliparts/jcx/do7/jcxdo7RcE.png" class="img-square" alt="foto-usuario" width="40px" height="40px">
-                        </div>
-                        <div class="col-sm-4">
-                            <h3 class="panel-title">Juanito Perez</h3>
-                            <a href="#"> +1 </a>
-                            <a href="#"> -1 </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </div>
-            </div>
+            {% endfor %}
+
+
+
         </div>
         <div class="col-sm-3">
         </div>
