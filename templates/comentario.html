@@ -48,15 +48,22 @@
         </div>
         <div class="col-sm-6">
             <div class="panel panel-default">
+
+
+<form action="{% url "comentar" %}" method="POST">
+    {% csrf_token %}
+
                 <div class="panel-heading">
                     
-                    <input type="text" class="form-control" placeholder="Nombre">
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
                     
                 </div>
                 <div class="panel-body">
-                    <textarea class="form-control" rows="3"></textarea></br>
-                    <button type="button" class="btn btn-primary">Comentar</button>
+                    <textarea class="form-control" name="comentario" rows="3"></textarea></br>
+                    <button type="submit" class="btn btn-primary">Comentar</button>
                 </div>
+</form>
+
             </div>
 
 
@@ -69,7 +76,7 @@
                             <img src="http://www.clker.com/cliparts/b/1/f/a/1195445301811339265dagobert83_female_user_icon.svg.med.png" class="img-square" alt="foto-usuario" width="40px" height="40px">
                         </div>
                         <div class="col-sm-4">
-                            <h3 class="panel-title">{{comment.usuario.nombre}} {{comment.usuario.apellido}}</h3>
+                            <h3 class="panel-title">{{comment.usuario}}</h3>
                             <a href="#"> +1 </a>
                             <a href="#"> -1 </a>
                         </div>
