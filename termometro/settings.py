@@ -142,9 +142,9 @@ MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(SITE_ROOT, 'static'),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(SITE_ROOT, 'static'),
+#)
 
 #Authentications things with django-social-auth
 
