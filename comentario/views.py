@@ -12,6 +12,15 @@ def comentar(request):
 	query_pregunta = get_object_or_404(Pregunta, pk = id)
 	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta)
 
+	if request.method == "POST":
+		usuario 	= request.POST.get("nombre","")
+		texto		= request.POST.get("comentario","")
+
+		comentario = Comentario(usuario=usuario, texto=texto,
+		 id_pregunta=query_pregunta)
+
+		comentario.save()
+
 	return render_to_response('comentario.html',
 		{'modelo': query_pregunta, 'comentarios':query_comentarios},
 		context_instance=RequestContext(request))

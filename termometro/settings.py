@@ -45,6 +45,9 @@ INSTALLED_APPS = (
     'registrarse',
     'preguntar',
     'comentario',
+    'social.apps.django_app.default',
+    'django.contrib.sites',
+    'login',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,16 +67,31 @@ WSGI_APPLICATION = 'termometro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE'    : 'django.db.backends.sqlite3',
-        'NAME'      : 'database-SQLi.db',
-        'USER'      : '',
-        'PASSWORD'  : '',
-        'HOST'      : '',
-        'PORT'      : '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE'    : 'django.db.backends.sqlite3',
+#         'NAME'      : 'database-SQLi.db',
+#         'USER'      : '',
+#         'PASSWORD'  : '',
+#         'HOST'      : '',
+#         'PORT'      : '',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
+#         'NAME'      : 'd7mtcl7epem3m',
+#         'USER'      : 'cgoajpyealkokc',
+#         'PASSWORD'  : 'TaIxmHmNzhlzPIbO5DfS7lH0WK',
+#         'HOST'      : 'ec2-54-83-14-68.compute-1.amazonaws.com',
+#         'PORT'      : '5432',
+#     }
+# }
+
+# Parse database configuration from $DATABASE_URL
+DATABASES= {}
+DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -113,10 +131,6 @@ TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT,'templates'),
 )
 
-
-# Parse database configuration from $DATABASE_URL
-#DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
-
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -128,3 +142,57 @@ MEDIA_ROOT = os.path.normpath(os.path.join(SITE_ROOT,'media'))
 MEDIA_URL = '/media/'
 
 STATIC_URL = '/static/'
+
+#STATICFILES_DIRS = (
+#    os.path.join(SITE_ROOT, 'static'),
+#)
+
+#Authentications things with django-social-auth
+
+
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+    'django.contrib.auth.context_processors.auth',
+
+)
+SOCIAL_AUTH_STRATEGY = 'social.strategies.django_strategy.DjangoStrategy'
+SOCIAL_AUTH_STORAGE = 'social.apps.django_app.default.models.DjangoStorage'
+URL_PATH = 'http://megafono.herokuapp.com'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/logged-in/'
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/login-error/'
+SOCIAL_AUTH_LOGIN_URL = '/login-url/'
+SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/new-user-redirect-url'
+SOCIAL_AUTH_NEW_ASSOCIATION_REDIRECT_URL = '/new-association-redirect-url/'
+SOCIAL_AUTH_DISCONNECT_REDIRECT_URL = '/account-disconnected-redirect-url/'
+SOCIAL_AUTH_INACTIVE_USER_URL = '/inactive-user/'
+
+
+#In case of need a custom user model
+AUTH_USER_MODEL = 'login.CustomUser'
+
+#Media providers special configuration
+#Facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '644854592229779' 
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b480d65d080a2fc92fc405c3ca481da6'
+SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = 'megafonoci'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.user.get_username',
+    #'social.pipeline.mail.mail_validation',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details'
+)

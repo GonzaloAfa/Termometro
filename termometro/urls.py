@@ -1,5 +1,4 @@
 from django.conf.urls import patterns, include, url
-
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -14,10 +13,17 @@ urlpatterns = patterns('',
     url(r'^$', 'termometro.views.home', name='home'),
     
     url(r'^comentario/', include('comentario.urls')),
-    url(r'^preguntas/', 'comentario.views.lista_preguntas', name='preguntas'),
-    
+    url(r'^preguntas/', 'comentario.views.lista_preguntas', name='preguntas'),    
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url('', include('social.apps.django_app.urls', namespace='social')),
+    url(r'^prueba/$', 'login.views.home'),
+    url(r'^login/$', 'login.views.home'),
+    url(r'^logout/$', 'login.views.logout'),
+    url(r'^done/$', 'login.views.done', name='done'),
+
+
+
     #url(r'^principal/', include('principal.urls')),
 
 )+ static( settings.STATIC_URL, document_root=settings.STATIC_ROOT)
