@@ -67,16 +67,16 @@ WSGI_APPLICATION = 'termometro.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE'    : 'django.db.backends.sqlite3',
-        'NAME'      : 'database-SQLi.db',
-        'USER'      : '',
-        'PASSWORD'  : '',
-        'HOST'      : '',
-        'PORT'      : '',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE'    : 'django.db.backends.sqlite3',
+#         'NAME'      : 'database-SQLi.db',
+#         'USER'      : '',
+#         'PASSWORD'  : '',
+#         'HOST'      : '',
+#         'PORT'      : '',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
@@ -88,6 +88,11 @@ DATABASES = {
 #         'PORT'      : '5432',
 #     }
 # }
+
+# Parse database configuration from $DATABASE_URL
+DATABASES= {}
+DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -125,10 +130,6 @@ STATICFILES_DIRS = (
 TEMPLATE_DIRS = (
     os.path.join(SITE_ROOT,'templates'),
 )
-
-
-# Parse database configuration from $DATABASE_URL
-#DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
