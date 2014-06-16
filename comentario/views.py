@@ -6,9 +6,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from preguntar.models import Pregunta 
 from comentario.models import Comentario
 
-def comentar(request):
+def comentar(request,id=1):
 
-	id = 1
+	
 	query_pregunta = get_object_or_404(Pregunta, pk = id)
 	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta)
 
