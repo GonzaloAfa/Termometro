@@ -138,8 +138,9 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 
 
-MEDIA_ROOT = os.path.normpath(os.path.join(SITE_ROOT,'media'))
-MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.normpath(os.path.join(os.path.dirname(__file__),'media/'))
+MEDIA_URL = 'media/'
 
 STATIC_URL = '/static/'
 
