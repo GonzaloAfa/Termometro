@@ -9,3 +9,4 @@ wsgiref==0.1.2
 django-admin-bootstrapped==1.6.4
 django-bootstrap-form==3.1
 python-social-auth
+pillow==2.1.0

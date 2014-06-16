@@ -20,9 +20,9 @@
     {% for pregunta in lista_preguntas%}
       <div class="col-xs-12 article-wrapper">
         <article>
-          <a href="../comentario" class="more">ver más</a>
-          <div class="img-wrapper"><img src="http://lorempixel.com/150/150/fashion" alt="" />
-          </div>
+          <a href="../comentario/{{pregunta.id}}" class="more">Ver más</a>
+          <div class="img-wrapper"><img src="{{pregunta.avatar.url}}" alt="foto" /></div>
+
           <h1>{{pregunta.pregunta}}</h1>
           <p>{{pregunta.encabezado}}</p>
         </article>

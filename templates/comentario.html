@@ -5,9 +5,9 @@
 {% block container %} 
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-          <div class="row">
+          <div class="row" style="margin-top: 20px;">
             <div class="col-sm-3 text-center">
-              <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTG4RKDxDzOos8wCCRDBlEiUlj6YYaJ8yDZZo7ZJS93Xk4QNsJhxw" class="img-circle" alt="circle-image" width="180px" height="180px">
+              <img src="../{{modelo.avatar.url}}" class="img-circle" alt="circle-image" width="180px" height="180px">
             </div>
           <div class="col-sm-9 text-center">
             <h2>{{modelo.pregunta}}</h2>
@@ -31,7 +31,7 @@
           <h3>¿Qué piensas al respecto?</h3>
             <!-- Responder pregunta-->
             <div class="panel panel-default">
-              <form action="{% url "comentar" %}" method="POST">
+              <form action="{% url "comentar" modelo.id %}" method="POST">
                 {% csrf_token %}
                 <div class="panel-heading">    
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre">
