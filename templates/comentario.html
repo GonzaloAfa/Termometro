@@ -31,7 +31,7 @@
           <h3>¿Qué piensas al respecto?</h3>
             <!-- Responder pregunta-->
             <div class="panel panel-default">
-              <form action="{% url "comentar" %}" method="POST">
+              <form action="{% url "comentar" modelo.id %}" method="POST">
                 {% csrf_token %}
                 <div class="panel-heading">    
                     <input type="text" name="nombre" class="form-control" placeholder="Nombre">

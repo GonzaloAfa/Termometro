@@ -13,11 +13,12 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'termometro.views.home', name='home'),
+    # url(r'^$', 'termometro.views.home', name='home'),
+    url(r'^$', 'comentario.views.lista_preguntas', name='preguntas'),
     url('', include('social.apps.django_app.urls', namespace='social')),
     
-    url(r'^comentario/', include('comentario.urls')),
-    url(r'^preguntas/', 'comentario.views.lista_preguntas', name='preguntas'),    
+    url(r'^comentario/(?P<id>\d+)$', 'comentario.views.comentar', name='comentar'),
+    #url(r'^preguntas/$', 'comentario.views.lista_preguntas', name='preguntas'),    
     
     url(r'^prueba/$', 'login.views.home'),
 
