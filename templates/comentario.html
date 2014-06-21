@@ -21,6 +21,8 @@
             <button class="btn btn-default"> Hola</button> <!-- Botones de la pregunta -->
             <button class="btn btn-default"> Hola</button>
             <button class="btn btn-default"> Hola</button>
+            {% block boton %}{% endblock %}
+
         </div>
 
       </div>
@@ -44,6 +46,8 @@
     </div>
     <!-- Fin Informacion al respecto-->
 
+
+{% block respuesta-comentario %}
     
     <!-- Pregunta -->
     <div class="col-xs-12 col-sm-12">
@@ -89,8 +93,9 @@
             </div>
             {% endfor %}
             <!-- fin Listado comentarios -->
-
-
           </div>
-        </div>
+
+  </div>
+{% endblock %}
+  
 {% endblock %}
