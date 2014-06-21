@@ -8,11 +8,14 @@
   	<!-- Bootstrap core CSS -->
     <link href="{% static "css/bootstrap.min.css"%}" rel="stylesheet">
     <link href="{% static "css/steps.css"%}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/bootstrap.minn.css"%}">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{% static "css/portada.css"%}" rel="stylesheet" type="text/css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="{% static "css/portada.css"%}" rel="stylesheet" type="text/css"/>
+
+
     <script src="{% static "js/jquery-1.10.2.min.js"%}"></script>
     <script src="{% static "js/codepen.js"%}"></script>
+    <script src="{% static "js/bootstrap.js"%}"/></script>
+    
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -28,6 +31,7 @@
 
 <body>
 
+
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -37,16 +41,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/"> Termómetro </a>
+          <a class="navbar-brand" href="/#portada">Megáfono</a>
         </div>
       </div>
     </div>
-      <div class="container">
-    	{% block container %} Megáfono {% endblock %}
-    	</div>
+
+  {% block jumbotron %} {% endblock %}
+  {% block container %} Megáfono {% endblock %}
+
 
       <hr>
-
       <footer>
         <div class="pull-center"><p>&copy; Agilidad 2014</p></div>
       </footer>
