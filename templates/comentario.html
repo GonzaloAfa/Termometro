@@ -21,7 +21,7 @@
             <button class="btn btn-default"> Hola</button> <!-- Botones de la pregunta -->
             <button class="btn btn-default"> Hola</button>
             <button class="btn btn-default"> Hola</button>
-            {% block boton %}{% endblock %}
+            {% block boton-comentar %}{% endblock %}
 
         </div>
 
@@ -32,8 +32,10 @@
 
 {% block container %} 
     
+    {% if success  == 'OK' %}
     <div id="mensajes"><div class="alert alert-success">Comentario ingresado con éxito</div></div>
-
+    {% endif %}
+    
     <!-- Informacion al respecto-->
     <div class="col-xs-12 col-sm-12">
       Más información al respecto:
