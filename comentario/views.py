@@ -20,7 +20,7 @@ def comentar(request, id):
 
 		comentario.save()
 
-	return render_to_response('comentario.html',
+	return render_to_response('comentario-v2.html',
 		{'modelo': query_pregunta, 'comentarios':query_comentarios},
 		context_instance=RequestContext(request))
 
