@@ -12,6 +12,7 @@ class Categoria(models.Model):
 # Create your models here.
 class Pregunta(models.Model):
 	avatar 		= models.ImageField(upload_to = 'pregunta', null=True, blank=True, verbose_name="Imagen")  
+	imagen 		= models.URLField(null=True)
 	usuario 	= models.ForeignKey(Usuario)	
 	pregunta 	= models.TextField()
 	encabezado	= models.TextField()
