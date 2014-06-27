@@ -35,18 +35,13 @@
     {% if success  == 'OK' %}
     <div id="mensajes"><div class="alert alert-success">Comentario ingresado con éxito</div></div>
     {% endif %}
-    
     <!-- Informacion al respecto-->
     <div class="col-xs-12 col-sm-12">
       Más información al respecto:
-      <h3>{{modelo.encabezado}}</h3>
+      <h3><a href="{{modelo.url}}">{{modelo.encabezado}}</a></h3>
       <hr/>
-      <div class="col-xs-12 col-sm-9">
+      <div class="col-xs-12 col-sm-12">
         {{modelo.cuerpo}}
-      </div>
-      <div class="col-xs-12 col-sm-3 text-right">
-        <a href="{{modelo.url}}" class="btn btn-primary" 
-          role="button">Ver nota completa &raquo;</a>
       </div>
     </div>
     <!-- Fin Informacion al respecto-->
