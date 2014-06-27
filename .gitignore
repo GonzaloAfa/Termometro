@@ -62,5 +62,6 @@ docs/_build/
 
 #Others files
 venv
+termometro/media/
 staticfiles
 .env
