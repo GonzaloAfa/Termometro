@@ -27,14 +27,14 @@
       <!--- Lista de preguntas -->
       {% for pregunta in lista_preguntas%}
         <div class="col-xs-12 col-sm-12 article-wrapper">
+          <a href="../comentario/{{pregunta.id}}">
           <article>
-            <a href="../comentario/{{pregunta.id}}" class="more">Ver más</a>
-            
             <div class="img-wrapper">
-              <img src="{{pregunta.avatar.url}}" class="img-responsive" alt="foto" />
+                <img src="{{pregunta.avatar.url}}" class="img-responsive" alt="foto" />
             </div>
             <h1>{{pregunta.pregunta}}</h1>
           </article>
+        </a>
         </div>
       {% endfor %}
       <!-- Fin Lista preguntas -->    
