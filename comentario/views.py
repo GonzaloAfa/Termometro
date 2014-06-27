@@ -21,7 +21,7 @@ def comentar(request, id):
 		success = 'OK'
 
 
-	return render_to_response('comentario-v3.html',
+	return render_to_response('comentario-v2.html',
 		{'modelo': query_pregunta, 'comentarios':query_comentarios, 'success':success },
 		context_instance=RequestContext(request))
 
