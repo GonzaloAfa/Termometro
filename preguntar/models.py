@@ -21,6 +21,9 @@ class Pregunta(models.Model):
 	categoria 	= models.ManyToManyField(Categoria) 
 	relevancia 	= models.IntegerField(default=0)
 	fecha 		= models.DateTimeField(auto_now = True)
+	voto_positivo	= models.IntegerField(default=0)
+	voto_negativo	= models.IntegerField(default=0)
+	voto_neutro		= models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return self.pregunta

@@ -1,72 +1,54 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block title %} Comentar - Megáfono {% endblock %}
 
-{% block container %} 
-      <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
-          <div class="row">
-            <div class="col-sm-3 text-center">
-              <img src="../{{modelo.avatar.url}}" class="img-circle" alt="circle-image" width="180px" height="180px">
-            </div>
-          <div class="col-sm-9 text-center">
+
+{% block jumbotron %}
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+
+          <div class="col-xs-12 col-sm-3 text-left">
+            <img src="../{{modelo.avatar.url}}" class="img-circle img-responsive" alt="Imagen" width="180px" height="180px">
+          </div>        
+          <div class="col-xs-12 col-sm-9">
             <h2>{{modelo.pregunta}}</h2>
           </div>
-          </div>
-          <hr/>
-          <div class="row">
-            <div class="col-sm-9"> 
-              <h4>{{modelo.encabezado}}</h4>
-              <h6>{{modelo.cuerpo}}</h6>
-            </div>
-            <div class="col-sm-3"> 
-              <a href="{{modelo.url}}" class="btn btn-primary btn-lg" role="button">Ver más información &raquo;</a>
-            </div>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3"> </div>
+        
+        <div class="col-xs-12 col-sm-9 text-right">
+            <h4>¿Qué te parece estos? <h4>
+            <button class="btn btn-default"> Hola</button> <!-- Botones de la pregunta -->
+            <button class="btn btn-default"> Hola</button>
+            <button class="btn btn-default"> Hola</button>
+            {% block boton-comentar %}{% endblock %}
 
-        <div class="col-sm-6">
-          <h3>¿Qué piensas al respecto?</h3>
-            <!-- Responder pregunta-->
-            <div class="panel panel-default">
-              <form action="{% url "comentar" %}" method="POST">
-                {% csrf_token %}
-                <div class="panel-heading">    
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
-                </div>                
-                <div class="panel-body">
-                    <textarea class="form-control" name="comentario" rows="3"></textarea></br>
-                    <button type="submit" class="btn btn-primary">Comentar</button>
-                </div>
-              </form>
-            </div>
-            <!-- Fin Responder pregunta-->
-
-
-            <!-- Listado comentarios -->
-            {% for comment in comentarios%}
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-sm-2">
-                            <img src="http://www.clker.com/cliparts/b/1/f/a/1195445301811339265dagobert83_female_user_icon.svg.med.png" class="img-square" alt="foto-usuario" width="40px" height="40px">
-                        </div>
-                        <div class="col-sm-4">
-                            <h3 class="panel-title">{{comment.usuario}}</h3>
-                            <a href="#"> +1 </a>
-                            <a href="#"> -1 </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel-body">
-                  {{comment.texto}}
-                </div>
-            </div>
-            {% endfor %}
-            <!-- fin Listado comentarios -->
-          </div>
-          <div class="col-sm-3"> </div>
         </div>
+
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block container %} 
+    
+    {% if success  == 'OK' %}
+    <div id="mensajes"><div class="alert alert-success">Comentario ingresado con éxito</div></div>
+    {% endif %}
+    <!-- Informacion al respecto-->
+    <div class="col-xs-12 col-sm-12">
+      Más información al respecto:
+      <h3><a href="{{modelo.url}}">{{modelo.encabezado}}</a></h3>
+      <hr/>
+      <div class="col-xs-12 col-sm-12">
+        {{modelo.cuerpo}}
+      </div>
+    </div>
+    <!-- Fin Informacion al respecto-->
+
+
+{% block respuesta-comentario %}
+
+{% endblock %}
+  
 {% endblock %}

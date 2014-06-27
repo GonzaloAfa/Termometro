@@ -1,0 +1,72 @@
+{% extends "comentario.html" %}
+{% load staticfiles %}
+
+
+{% block respuesta-comentario %}
+    
+    <!-- Pregunta -->
+    <div class="col-xs-12 col-sm-12">
+         <hr>
+        <div class="col-xs-12 col-sm-6">
+          <h3>¿Qué opinas al respecto?</h3>
+
+            <!-- Responder pregunta-->
+            <div class="panel panel-default">
+              <form action="{% url "comentar" modelo.id %}" method="POST">
+                {% csrf_token %}
+                <div class="panel-heading">    
+                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                </div>                
+                <div class="panel-body">
+                    <textarea class="form-control" name="comentario" rows="3"></textarea></br>
+                    <button type="submit" class="btn btn-primary">Comentar</button>
+                </div>
+              </form>
+            </div>
+            <!-- Fin Responder pregunta-->
+        </div>
+
+        <div class="col-xs-12 col-sm-6">
+
+            <br/>
+            <button class="btn btn-primary" id="show-comentarios"> Ver Comentarios </button>
+
+            <div id="ver-comentarios" style="display: none">
+
+              <h3>Listado de comentarios</h3>
+            
+                <!-- Listado comentarios -->
+                {% for comment in comentarios%}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-1">
+                                <img src="{% static "images/user.png" %}" class="img-square" alt="foto-usuario" width="18px" height="18px">
+                            </div>
+                            <div class="col-sm-11">
+                                <h3 class="panel-title">{{comment.usuario}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                      {{comment.texto}}
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- fin Listado comentarios -->
+            </div>
+
+
+          </div>
+
+  </div>
+  
+<script>
+$( "#show-comentarios" ).click(function() {
+    console.log("hola");
+    
+    $( "#ver-comentarios" ).show( "slow" );
+});
+</script>
+{% endblock %}
+

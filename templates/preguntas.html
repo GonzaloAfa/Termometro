@@ -1,43 +1,47 @@
-<html>
-<head>
-<!-- Bootstrap -->
-{% load staticfiles %}
+{% extends "base.html" %}
+{% block title %} Preguntas - Megáfono {% endblock %}
 
-<link rel="stylesheet" href="{% static "css/bootstrap.minn.css"%}">
-<link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-<link href="{% static "css/portada.css"%}" rel="stylesheet" type="text/css">
-<script src="{% static "js/jquery-1.10.2.min.js"%}"></script>
-<script src="{% static "js/codepen.js"%}"></script>
-</head>
-<body>
+{% block container %} 
 
-<h1 id="header" class="text-primary">Megáfono</h1>
-  
-<div class="container list-article">
-  <div class="btn-group pull-right" id="switch-view">
-    <button class="btn btn-primary">
-      <span class="icon-th-large"></span>
-    </button>
-    <button class="btn btn-primary active">
-      <span class="icon-th-list"></span>
-    </button>
-  </div>
-  <div class="clearfix"></div>
-  <div class="row">
-    
-    <!--- Lista de preguntas -->
-    {% for pregunta in lista_preguntas%}
-      <div class="col-xs-12 article-wrapper">
-        <article>
-          <a href="../comentario" class="more">more</a>
-          <div class="img-wrapper"><img src="http://lorempixel.com/150/150/fashion" alt="" /></div>
-          <h1>{{pregunta.pregunta}}</h1>
-          <p>{{pregunta.encabezado}}</p>
-        </article>
-      </div>
-    {% endfor %}
-
-  </div>
+<div class="col-xs-12 col-sm-12 text-center">
+  <h1 id="header"><i class="fa fa-bullhorn fa"></i> Megáfono Ciudadano</h1>
+  <h3>Llegó el momento en que la ciudadanía pone los temas sobre la mesa</h3>
 </div>
-</body>
-</html>
+  
+
+<div class="col-xs-12 col-sm-12 text-center">
+
+  <div class="list-article">
+    <hr/>    
+  
+    <!-- Botones-->
+    <div class="btn-group pull-right" id="switch-view">
+      <button class="btn btn-primary"> <i class="fa fa-th-large"></i></button>
+      <button class="btn btn-primary active"><i class="fa fa-th-list"></i></button>
+    </div>
+    <!-- Fin Botones-->
+    
+    <div class="clearfix"></div>
+
+    <div class="row">
+      <!--- Lista de preguntas -->
+      {% for pregunta in lista_preguntas%}
+        <div class="col-xs-12 col-sm-12 article-wrapper">
+          <a href="../comentario/{{pregunta.id}}">
+          <article>
+            <div class="img-wrapper">
+                <img src="{{pregunta.avatar.url}}" class="img-responsive" alt="foto" />
+            </div>
+            <h1>{{pregunta.pregunta}}</h1>
+          </article>
+        </a>
+        </div>
+      {% endfor %}
+      <!-- Fin Lista preguntas -->    
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}
