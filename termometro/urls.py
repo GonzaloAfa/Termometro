@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),
     
     url(r'^comentario/(?P<id>\d+)$', 'comentario.views.comentar', name='comentar'),
+    url(r'^comentario/e/(?P<id>\d+)$', 'comentario.views.comentar_experimento', name='comentar_experimento'),
     #url(r'^preguntas/$', 'comentario.views.lista_preguntas', name='preguntas'),    
     
     url(r'^prueba/$', 'login.views.home'),
