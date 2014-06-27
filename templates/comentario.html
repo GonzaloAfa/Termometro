@@ -16,12 +16,13 @@
             <h2>{{modelo.pregunta}}</h2>
           </div>
         
-        <!---<div class="col-xs-12 col-sm-9 text-right">
+        <div class="col-xs-12 col-sm-9 text-right">
             <h4>¿Qué te parece estos? <h4>
-            <button class="btn btn-default"> Hola</button> <!-- Botones de la pregunta -->
-        <!---    <button class="btn btn-default"> Hola</button>
+            <button class="btn btn-default"> Hola</button> 
+            <!-- Botones de la pregunta -->
             <button class="btn btn-default"> Hola</button>
-            {% block boton-comentar %}{% endblock %} -->
+            <button class="btn btn-default"> Hola</button>
+            {% block boton-comentar %}{% endblock %}
 
         </div>
 
@@ -37,7 +38,7 @@
     {% endif %}
     <!-- Informacion al respecto-->
     <div class="col-xs-12 col-sm-12">
-      Más información al respecto:
+      Ver artículo original:
       <h3><a href="{{modelo.url}}">{{modelo.encabezado}}</a></h3>
       <hr/>
       <div class="col-xs-12 col-sm-12">
