@@ -27,7 +27,7 @@
       <!--- Lista de preguntas -->
       {% for pregunta in lista_preguntas%}
         <div class="col-xs-12 col-sm-12 article-wrapper">
-          <a href="../comentario/{{pregunta.id}}">
+          <a href="../comentario?id={{pregunta.id}}">
           <article>
             <div class="img-wrapper">
                 <img src="{{pregunta.imagen}}" class="img-responsive" alt="foto" />
