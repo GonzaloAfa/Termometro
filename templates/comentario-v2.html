@@ -4,8 +4,9 @@
 {% block boton-comentar %}
 <!-- Button trigger modal -->
 <button class="btn btn-success" data-toggle="modal" data-target="#myModal">
-  Comentar
+  comentar
 </button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -17,15 +18,15 @@
         <h4 class="text-left">Ingresa tu comentario</h4>
       </div>
 
-      <form action="{% url "comentar" modelo.id %}" method="POST">
+      <form action="{% url "comentar" %}?id={{ modelo.pk }}" method="POST">
         <div class="modal-body">
         <!-- Responder pregunta-->
                 {% csrf_token %}
                 <div class="panel-heading">    
-                    <input type="text" name="nombre" class="form-control" placeholder="Ingresa tu nombre">
+                    <input type="text" required name="nombre" class="form-control" placeholder="Ingresa tu nombre">
                 </div>                
                 <div class="panel-body">
-                    <textarea class="form-control" placeholder="Ingresa tu comentario" name="comentario" rows="3"></textarea></br>
+                    <textarea class="form-control" required placeholder="Ingresa tu comentario" name="comentario" rows="3"></textarea></br>
                 </div>
         <!-- Fin Responder pregunta-->
         </div>

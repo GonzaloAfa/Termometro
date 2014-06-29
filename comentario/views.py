@@ -7,9 +7,10 @@ from preguntar.models import Pregunta
 from comentario.models import Comentario
 
 
-def comentar(request, id): 
-	query_pregunta = get_object_or_404(Pregunta, pk = id)
-	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta).reverse()
+def comentar(request): 
+	question_id = request.GET.get('id')
+	query_pregunta = get_object_or_404(Pregunta, pk = question_id)
+	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta)
 	success = 'NOT' 
 
 	if request.method == "POST":
@@ -26,8 +27,9 @@ def comentar(request, id):
 		context_instance=RequestContext(request))
 
 
-def comentar_experimento(request, id): 
-	query_pregunta = get_object_or_404(Pregunta, pk = id)
+def comentar_experimento(request): 
+	question_id = request.GET.get('id')
+	query_pregunta = get_object_or_404(Pregunta, pk = question_id)
 	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta).reverse()
 	success = 'NOT' 
 

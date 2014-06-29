@@ -36,13 +36,13 @@
 
             <!-- Responder pregunta-->
             <div class="panel panel-default">
-              <form action="{% url "comentar" modelo.id %}" method="POST">
+              <form action="{% url "comentar" %}/e?id={{ modelo.pk }}" method="POST">
                 {% csrf_token %}
                 <div class="panel-heading">    
-                    <input type="text" name="nombre" class="form-control" placeholder="Nombre">
+                    <input type="text" name="nombre" required class="form-control" placeholder="Nombre">
                 </div>                
                 <div class="panel-body">
-                    <textarea class="form-control" name="comentario" rows="3"></textarea></br>
+                    <textarea class="form-control" required name="comentario" rows="3"></textarea></br>
                     <button type="submit" class="btn btn-primary sendComment">Comentar</button>
                 </div>
               </form>
