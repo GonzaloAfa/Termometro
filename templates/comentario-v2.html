@@ -18,7 +18,7 @@
         <h4 class="text-left">Ingresa tu comentario</h4>
       </div>
 
-      <form action="{% url "comentar" %}?id={{ modelo.pk }}" method="POST">
+      <form action="{% url 'comentar' %}?id={{ modelo.pk }}" method="POST">
         <div class="modal-body">
         <!-- Responder pregunta-->
                 {% csrf_token %}
