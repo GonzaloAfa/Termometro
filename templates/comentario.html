@@ -5,6 +5,7 @@
 
   {% block CodigoExperimento %} 
 <!-- Google Analytics Content Experiment code -->
+
 <script>function utmx_section(){}function utmx(){}(function(){var
 k='87445227-0',d=document,l=d.location,c=d.cookie;
 if(l.search.indexOf('utm_expid='+k)>0)return;
@@ -17,9 +18,8 @@ length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
 valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
 </script><script>utmx('url','A/B');</script>
+
 <!-- End of Google Analytics Content Experiment code -->
-
-
   {% endblock %}
 
 {% block jumbotron %}
@@ -35,11 +35,13 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
           </div>
         
         <div class="col-xs-12 col-sm-9 text-right">
-            <h4>¿Qué te parece estos? <h4>
-            <button class="btn btn-default"> Hola</button> 
+            <h4>¿Qué sientes con esta noticia?<h4>
             <!-- Botones de la pregunta -->
-            <button class="btn btn-default"> Hola</button>
-            <button class="btn btn-default"> Hola</button>
+            <div id="votacion">
+              <button id="votar_pregunta_positivo" value="positivo" class="btn btn-default"> Sorpresa</button> 
+              <button id="votar_pregunta_neutro" value="neutro" class="btn btn-default"> Indiferencia</button>
+              <button id="votar_pregunta_negativo" value="negativo" class="btn btn-default"> Enojo</button>
+            </div>
             {% block boton-comentar %}{% endblock %}
 
         </div>
@@ -69,5 +71,40 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 {% block respuesta-comentario %}
 
 {% endblock %}
+
+<script type="text/javascript">
+  $('#votar_pregunta_positivo').add('#votar_pregunta_neutro').add('#votar_pregunta_negativo').click(votar_pregunta);
+
+  function votar_pregunta(){
+
+    var id     = {{modelo.id}}; 
+    var option = $(this).val();
+
+    $.ajax({
+      type    : 'get',
+      url     : '/comentario/votar',
+      data    : {'question_id': id, 'option' : option},
+      success : function(data){
+        
+        for (var i = 0; i<data.length; i++){
+              $('#votacion').empty();
+             
+              $('#votacion').append('<button id="votar1" class="btn btn-default">'+data[i].fields.voto_positivo+' Sorpresa</button>'); 
+              $('#votacion').append('<button id="votar2" class="btn btn-default">'+data[i].fields.voto_neutro+' Indiferencia</button>');
+              $('#votacion').append('<button id="votar3" class="btn btn-default">'+data[i].fields.voto_negativo+' Enojo</button>');
+        }
+        
+        $('#votar1').prop("disabled",true);
+        $('#votar2').prop("disabled",true);  
+        $('#votar3').prop("disabled",true);  
+        
+        },
+      error : function(xhr, textStatus, errorThrown){
+        console.log("wow, much error");
+      }
+        })
+  }
+
+ </script>
   
 {% endblock %}
