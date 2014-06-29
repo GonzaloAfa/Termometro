@@ -16,9 +16,16 @@ urlpatterns = patterns('',
     # url(r'^$', 'termometro.views.home', name='home'),
     url(r'^$', 'comentario.views.lista_preguntas', name='preguntas'),
     url('', include('social.apps.django_app.urls', namespace='social')),
+
+
     
     url(r'^comentario/(?P<id>\d+)$', 'comentario.views.comentar', name='comentar'),
     url(r'^comentario/e/(?P<id>\d+)$', 'comentario.views.comentar_experimento', name='comentar_experimento'),
+
+    # Esto es de prueba
+    url(r'^comentario/$', 'comentario.views.comentar_prueba', name='comentar_prueba'),
+
+
     #url(r'^preguntas/$', 'comentario.views.lista_preguntas', name='preguntas'),    
     
     url(r'^prueba/$', 'login.views.home'),
