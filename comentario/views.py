@@ -45,6 +45,33 @@ def comentar_experimento(request, id):
 		context_instance=RequestContext(request))
 
 
+
+def comentar_prueba(request): 
+	#obtener idalumno
+	id = request.GET.get('id')
+
+	query_pregunta = get_object_or_404(Pregunta, pk = id)
+	query_comentarios = Comentario.objects.filter(id_pregunta = query_pregunta).reverse()
+	success = 'NOT' 
+
+	if request.method == "POST":
+		usuario 	= request.POST.get("nombre","")
+		texto		= request.POST.get("comentario","")
+
+		comentario = Comentario(usuario=usuario, texto=texto, id_pregunta=query_pregunta)
+		comentario.save()
+		success = 'OK'
+
+
+	return render_to_response('comentario-v2.html',
+		{'modelo': query_pregunta, 'comentarios':query_comentarios, 'success':success },
+		context_instance=RequestContext(request))
+
+
+
+
+
+
 def lista_preguntas(request):
 	lista_preguntas = Pregunta.objects.all()
 	return render_to_response('preguntas.html', 
