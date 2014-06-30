@@ -94,7 +94,7 @@ def votar_pregunta(request):
 
 
 def lista_preguntas(request):
-	lista_preguntas = Pregunta.objects.all()
+	lista_preguntas = Pregunta.objects.all().reverse()
 	return render_to_response('preguntas.html', 
 		{'lista_preguntas' : lista_preguntas}, 
 		context_instance=RequestContext(request))
