@@ -32,6 +32,7 @@ def comentar(request):
 		context_instance=RequestContext(request))
 
 
+
 def comentar_experimento(request): 
 	question_id = request.GET.get('id')
 	query_pregunta = get_object_or_404(Pregunta, pk = question_id)
@@ -53,15 +54,10 @@ def comentar_experimento(request):
 
 
 
-
-
-
-
-
 def votar_pregunta(request):
 	if request.is_ajax:
 
-		if request.method=='GET':
+		if request.method== 'GET':
 
 			question_id 	= request.GET.get('question_id') #TODO: verificar que sea Int
 			option 			= request.GET.get('option') 
@@ -91,6 +87,7 @@ def votar_pregunta(request):
 			return HttpResponse(status=400)
 	else:
 		return HttpResponse(status=501)
+
 
 
 def lista_preguntas(request):

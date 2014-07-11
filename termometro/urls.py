@@ -20,8 +20,6 @@ urlpatterns = patterns('',
     url(r'^comentario$', 'comentario.views.comentar', name='comentar'),
     url(r'^comentario/e$', 'comentario.views.comentar_experimento', name='comentar_experimento'),
 
-    #url(r'^preguntas/$', 'comentario.views.lista_preguntas', name='preguntas'),    
-
     url(r'^comentario/votar$', 'comentario.views.votar_pregunta', name='votar_pregunta'),
     
     #Facebook
@@ -29,8 +27,6 @@ urlpatterns = patterns('',
     url(r'^login/$', 'login.views.home'),
     url(r'^logout/$', 'login.views.logout'),
     url(r'^done/$', 'login.views.done', name='done'),
-
-
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -11,10 +11,12 @@ from social.backends.google import GooglePlusAuth
 from social.apps.django_app.utils import strategy
 
 
+
 def logout(request):
     """Logs out user"""
     auth_logout(request)
     return render_to_response('home.html', {}, RequestContext(request))
+
 
 
 def home(request):
@@ -24,6 +26,7 @@ def home(request):
     return render_to_response('home.html', {
         'plus_id': getattr(settings, 'SOCIAL_AUTH_GOOGLE_PLUS_KEY', None)
     }, RequestContext(request))
+
 
 
 @login_required
@@ -37,8 +40,10 @@ def done(request):
     }, RequestContext(request))
 
 
+
 def signup_email(request):
     return render_to_response('email_signup.html', {}, RequestContext(request))
+
 
 
 def validation_sent(request):
@@ -47,12 +52,14 @@ def validation_sent(request):
     }, RequestContext(request))
 
 
+
 def require_email(request):
     if request.method == 'POST':
         request.session['saved_email'] = request.POST.get('email')
         backend = request.session['partial_pipeline']['backend']
         return redirect('social:complete', backend=backend)
     return render_to_response('email.html', RequestContext(request))
+
 
 
 @strategy('social:complete')

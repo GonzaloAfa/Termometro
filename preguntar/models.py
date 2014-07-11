@@ -9,7 +9,7 @@ class Categoria(models.Model):
 		return self.tipo
 
 
-# Create your models here.
+
 class Pregunta(models.Model):
 	avatar 		= models.ImageField(upload_to = 'pregunta', null=True, blank=True, verbose_name="Imagen")  
 	imagen 		= models.URLField(null=True)

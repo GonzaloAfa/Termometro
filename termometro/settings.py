@@ -64,31 +64,6 @@ ROOT_URLCONF = 'termometro.urls'
 WSGI_APPLICATION = 'termometro.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE'    : 'django.db.backends.sqlite3',
-#         'NAME'      : 'database-SQLi.db',
-#         'USER'      : '',
-#         'PASSWORD'  : '',
-#         'HOST'      : '',
-#         'PORT'      : '',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE'    : 'django.db.backends.postgresql_psycopg2',
-#         'NAME'      : 'd7mtcl7epem3m',
-#         'USER'      : 'cgoajpyealkokc',
-#         'PASSWORD'  : 'TaIxmHmNzhlzPIbO5DfS7lH0WK',
-#         'HOST'      : 'ec2-54-83-14-68.compute-1.amazonaws.com',
-#         'PORT'      : '5432',
-#     }
-# }
-
 # Parse database configuration from $DATABASE_URL
 DATABASES= {}
 DATABASES['default'] =  dj_database_url.config(default=os.environ['DATABASE_URL'])
@@ -148,9 +123,8 @@ STATIC_URL = '/static/'
 #    os.path.join(SITE_ROOT, 'static'),
 #)
 
+
 #Authentications things with django-social-auth
-
-
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
